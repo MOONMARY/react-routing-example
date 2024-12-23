@@ -1,10 +1,12 @@
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Header from "../src/components/Header";
 import Navbar from "../src/components/Navbar";
-import { Routes, Route } from "react-router-dom";
+import Profile from "../src/pages/Dashboard/Profile";
+import Settings from "../src/pages/Dashboard/Settings";
 
 function App() {
   return (
@@ -18,7 +20,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          {/* Nested Routing */}
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route path="profile/:userid" element={<Profile />} />
+            <Route path="settings" element={<Settings />} />
+          </Route>
         </Routes>
       </article>
     </div>
